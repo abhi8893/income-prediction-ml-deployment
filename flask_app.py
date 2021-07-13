@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-import requests
 from project.config import INPUT_HEADERS
 import pickle
 import os
 import pandas as pd
+from src.utils import remove_extra_whitespace
 
 app = Flask(__name__)
 
@@ -29,8 +29,10 @@ def predict():
 
 @app.route('/predict_file', methods=['POST'])
 def predict_file():
-    df = pd.read_csv(request.files.get('file'))
-    print(df)
+    df = pd.read_csv(request.files.get('file'))[HEADERS]
+    str_cols = df.select_dtypes('object').columns
+    df[str_cols] = df[str_cols].applymap(remove_extra_whitespace)
+    
     preds = PREDICTION_PIPE.predict(df)
     output = {'income_prediction': list(preds)}
 
