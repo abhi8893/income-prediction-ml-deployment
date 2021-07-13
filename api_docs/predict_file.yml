@@ -1,0 +1,9 @@
+post:
+  summary: Predict Income using Census Characteristics CSV file.
+  consumes:
+    - multipart/form-data
+  parameters:
+    - in: formData
+      name: file
+      type: file
+      description: Census Characteristics CSV file.

@@ -1,0 +1,42 @@
+
+post:
+  description: Predict Income using Census Characteristics
+  consumes:
+    - application/json
+  parameters:
+    - name: body
+      in: body
+      required: true
+      schema:
+        properties:
+          age:
+            type: integer
+          workclass:
+            type: string
+          fnlwgt:
+            type: number
+          education:
+            type: string
+          education-num:
+            type: number
+          marital-status:
+            type: string
+          occupation:
+            type: string
+          relationship:
+            type: string
+          race:
+            type: string
+          sex:
+            type: string
+          capital-gain:
+            type: number
+          capital-loss:
+            type: number
+          hours-per-week:
+            type: number
+          native-country:
+            type: string
+  responses:
+    200:
+      description: Income Level
