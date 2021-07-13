@@ -2,3 +2,4 @@ pandas
 matplotlib
 sklearn==0.24.*
 imblearn
+flask
