@@ -26,3 +26,15 @@ def remove_extra_whitespace(s):
     return re.sub(r'\s+', r' ', s.strip())
 
 
+def get_train_test_ratio_stats(train_data, test_data):
+    num_train = len(train_data)
+    num_test = len(test_data)
+
+    train_perc = round(num_train*100/(num_train + num_test))
+    test_perc = 100 - train_perc
+
+    ratio_stats = {'num_train': len(num_train), 'num_test': len(num_test), 
+                   'train_perc': train_perc, 'test_perc': test_perc}
+    
+    return ratio_stats
+
