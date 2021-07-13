@@ -16,10 +16,11 @@ if PREDICTION_TYPE == 'data':
     URL = f'http://127.0.0.1:{PORT}/predict'
 
     str_cols = DATA.select_dtypes('object').columns
-    person_features = DATA.iloc[0:10].copy()
+    person_features = DATA.iloc[0:1].copy()
     person_features[str_cols] = person_features[str_cols].applymap(remove_extra_whitespace)
 
     person_features = person_features[HEADERS].to_dict(orient='list')
+    print(person_features)
     resp = requests.post(URL, json=person_features)
 
 elif PREDICTION_TYPE == 'file':
@@ -30,6 +31,8 @@ elif PREDICTION_TYPE == 'file':
     s_buf.seek(0)
 
     resp = requests.post(URL, files={'file': s_buf})
+
+    # fpath = os.path.join(PROJECT_DIR, 'data', 'adult.test')
     
     # with open(fpath, 'rb') as file:
     #     resp = requests.post(URL, files={'file': file})
