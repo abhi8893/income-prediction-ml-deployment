@@ -1,2 +1,4 @@
 pandas
-sklearn
+matplotlib
+sklearn==0.24.*
+imblearn
