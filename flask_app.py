@@ -22,8 +22,48 @@ def index():
 
 
 @app.route('/predict', methods=['POST'])
-@swag_from('api_docs/predict.yml')
 def predict():
+    '''Predict Income using Census Characteristics
+    ---
+    parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            properties:
+                age:
+                    type: number
+                workclass:
+                    type: string
+                fnlwgt:
+                    type: number
+                education:
+                    type: string
+                education-num:
+                    type: number
+                marital-status:
+                    type: string
+                occupation:
+                    type: string
+                relationship:
+                    type: string
+                race:
+                    type: string
+                sex:
+                    type: string
+                capital-gain:
+                    type: number
+                capital-loss:
+                    type: number
+                hours-per-week:
+                    type: number
+                native-country:
+                    type: string
+    responses:
+        200:
+            description: Income Level
+    '''
+    print(request.get_json())
     try:
         features = pd.DataFrame(request.get_json())[HEADERS]
     except ValueError:
@@ -36,8 +76,19 @@ def predict():
     return jsonify(output)
 
 @app.route('/predict_file', methods=['POST'])
-@swag_from('api_docs/predict_file.yml')
 def predict_file():
+    """Predict Income using Census Characteristics CSV File.
+    ---
+    parameters:
+        - name: file
+          in: formData
+          type: file
+          description: Census Characteristics CSV file.
+          required: true
+    responses:
+        200:
+            description: Income Levels    
+    """
     df = pd.read_csv(request.files.get('file'))[HEADERS]
     str_cols = df.select_dtypes('object').columns
     df[str_cols] = df[str_cols].applymap(remove_extra_whitespace)
