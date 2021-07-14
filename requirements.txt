@@ -1,6 +1,6 @@
 pandas
 matplotlib
-sklearn==0.24.*
+scikit-learn
 imblearn
 flask
 flasgger
