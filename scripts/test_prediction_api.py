@@ -8,7 +8,7 @@ import sys
 import io
 
 PREDICTION_TYPE = sys.argv[1]
-PORT = 9696
+PORT = 5000
 HEADERS = INPUT_HEADERS['randomforest_best_pipe.pkl']
 DATA = load_data('test')
 
