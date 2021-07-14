@@ -2,12 +2,12 @@
 
 This is a repository about the basics of deploying a machine learning model:
 
-- Model training using sklearn
-- Model API development using Flask
-- API documentation using Swagger
-- API testing using Postman
-- Contanerization using Docker 
-- A simple frontend using Streamlit
+✔️ Model training using sklearn <br>
+✔️ Model API development using Flask <br>
+✔️ API documentation using Swagger <br>
+✔️ API testing using Postman <br>
+✔️ Contanerization using Docker <br> 
+✔️ A simple frontend using Streamlit <br>
 
 
 ## Dataset
@@ -30,4 +30,31 @@ This is a repository about the basics of deploying a machine learning model:
 | hours-per-week | continuous.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | native-country | United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands. |
 
-## 
+## Run `Flask` app in `Docker`
+
+
+* build the image 
+```bash
+$ docker build -t income_pred_app .
+```
+
+* Run the container
+```bash
+$ docker run -p 5000:5000 income_pred_app
+```
+
+* Visit `localhost:5000/apidocs` for `Swagger API`
+
+![](references/apidocs.png)
+
+
+## Run `Streamlit` app
+
+```bash
+$ streamlit run streamlit_app.py
+```
+
+![](references/streamlit_app.png)
+
+
+
