@@ -4,3 +4,4 @@ scikit-learn
 imblearn
 flask
 flasgger
+streamlit
